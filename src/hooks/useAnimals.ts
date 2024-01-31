@@ -25,7 +25,9 @@ export const useAnimals = (animal: string) => {
       }
     }
 
-    fetchData()
+    if(animal != ""){
+      fetchData()
+    }
   }, [animal])
 
   return {animals, loading, error}

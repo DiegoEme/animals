@@ -1,17 +1,17 @@
-import { useState } from 'react'
-import './App.css'
-import AnimalInput from './components/AnimalInput'
-import AnimalList from './components/AnimalList'
+import React from 'react'
+import { Routes, Route } from "react-router-dom"
+import Nav from "./components/Nav";
+import HomePage from "./routes/HomePage";
+import Favorites from "./routes/FavoritesPage";
 
-function App() {
-  const [animal, setAnimal] = useState("")
-
+export default function App () {
   return (
     <>
-      <AnimalInput onAnimalChange={setAnimal} />
-      <AnimalList animal={animal} />
+    <Nav />
+    <Routes>
+      <Route path="/" element ={<HomePage />} />
+      <Route path="/favorites" element ={<Favorites />} />
+    </Routes>
     </>
   )
 }
-
-export default App
