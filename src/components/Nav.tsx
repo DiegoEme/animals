@@ -4,11 +4,9 @@ import { Link } from "react-router-dom";
 export default function Nav(){
   return (
     <>
-      <div id="sidebar">
-        {/* other elements */}
-
-        <nav>
-          <ul>
+      <div>
+        <nav className="text-xl font-bold text-white">
+          <ul className='flex gap-10 bg-slate-600 p-4'>
             <li>
               <Link to={`/`}>Home</Link>
             </li>

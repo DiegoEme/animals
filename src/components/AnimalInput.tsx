@@ -22,15 +22,18 @@ export default function AnimalInput ({onAnimalChange}: IAnimalSearchProps)  {
   }
 
   return (
-    <div>
+    <div className="mt-5 flex gap-5">
       <input
+        className="p-2 border-2"
         type="text"
         placeholder="Enter Animal Name"
         value={animal}
         onChange = {handleInputChange}
         onKeyPress={handleKeyPress}
       />
-    <button onClick={handleSearch}>Search</button>
+    <button 
+      className="px-6 rounded-lg bg-slate-600 text-white" 
+      onClick={handleSearch}>Search</button>
     </div>
   )
 }

@@ -12,7 +12,7 @@ export default function Favorites () {
 
   
   return (
-    <div>
+    <div className='flex flex-col justify-center items-center gap-10 mt-5'>
       {<AnimalList animals={favoriteAnimals}/>}
     </div>
   )

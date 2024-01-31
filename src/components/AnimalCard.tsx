@@ -25,10 +25,13 @@ export default function AnimalCard ({animal}: IAnimalCard){
   }
 
   return (
-  <div onClick={handleAnimalOnClick}>
+  <div 
+    className="flex gap-2 max-w-4xl justify-between cursor-pointer"
+    onClick={handleAnimalOnClick}
+  >
     <h3>{animal.name}</h3>
-    {animal.isFav ? <img src={starFilled} height={25} alt="" /> : 
-      <img src={star} height={25} alt="" />}
+    {animal.isFav ? <img src={starFilled} height={25} width={25} alt="star" /> : 
+      <img src={star} height={25} width={25} alt="star filled" />}
   </div>
   )
 }

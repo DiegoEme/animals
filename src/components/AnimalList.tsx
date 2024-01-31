@@ -8,7 +8,7 @@ interface IAnimalList {
 
 export default function AnimalList({animals}: IAnimalList){
   return (
-    <div>
+    <div className="flex flex-col gap-2">
       {animals.length > 0 ? animals.map((animal) => <AnimalCard key={animal.name} animal={animal}/>) : "No results"}
     </div>
     )
