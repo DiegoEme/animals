@@ -1,4 +1,4 @@
-import AnimalCard from "../components/AnimalCard"
+import AnimalList from "../components/AnimalList"
 import { IAnimalResponse } from "../types"
 
 export default function Favorites () {
@@ -13,7 +13,7 @@ export default function Favorites () {
   
   return (
     <div>
-      {favoriteAnimals.map((animal) => <AnimalCard key={animal.name} animal={animal}/>) }
+      {<AnimalList animals={favoriteAnimals}/>}
     </div>
   )
 }
