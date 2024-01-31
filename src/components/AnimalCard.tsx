@@ -1,12 +1,34 @@
-import { Animal } from "../types"
+import { Animal, IAnimalResponse } from "../types"
+import star from "../assets/star.png"
+import starFilled from "../assets/star-filled.png"
+
 
 interface IAnimalCard {
   animal: Animal
 }
 export default function AnimalCard ({animal}: IAnimalCard){
+  const handleAnimalOnClick = () => {
+    const favoriteAnimals = localStorage.getItem("myFavAnimals")
+    let favoriteAnimalJson: IAnimalResponse = []
+
+    if(favoriteAnimals !== null){
+      favoriteAnimalJson = JSON.parse(favoriteAnimals)
+      const alreadyExists = favoriteAnimalJson.find((favorite) => favorite.name === animal.name)
+      if(alreadyExists){
+        //do not save
+        //TODO remove it
+        return
+      }
+    }
+    
+    localStorage.setItem("myFavAnimals", JSON.stringify([...favoriteAnimalJson, {...animal, isFav: true}]))
+  }
 
   return (
-  <div>
+  <div onClick={handleAnimalOnClick}>
     <h3>{animal.name}</h3>
-  </div>)
+    {animal.isFav ? <img src={starFilled} height={25} alt="" /> : 
+      <img src={star} height={25} alt="" />}
+  </div>
+  )
 }

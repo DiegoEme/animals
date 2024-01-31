@@ -5,6 +5,7 @@ export interface Animal {
   taxonomy: Taxonomy
   locations: string[]
   characteristics: Characteristics
+  isFav?: boolean
 }
 
 export interface Taxonomy {
