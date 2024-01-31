@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
 import { IAnimalResponse } from "../types"
 
+const cache: Record<string, IAnimalResponse> = {}
+
 export const useAnimals = (animal: string) => {
   const [animals, setAnimals] = useState<IAnimalResponse>([])
   const [error, setError] = useState("")
@@ -8,6 +10,7 @@ export const useAnimals = (animal: string) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      if(animal === "") return 
       setLoading(true)
       try {
         const response = await fetch(`https://api.api-ninjas.com/v1/animals?name=${animal}`, {
@@ -16,6 +19,7 @@ export const useAnimals = (animal: string) => {
           }
         })
         const data: IAnimalResponse = await response.json()
+        cache[animal] = data
         setAnimals(data)
         setLoading(false)
       } catch (error) {
@@ -25,8 +29,10 @@ export const useAnimals = (animal: string) => {
       }
     }
 
-    if(animal != ""){
+    if(!(cache[animal])){
       fetchData()
+    } else {
+      setAnimals(cache[animal])
     }
   }, [animal])
 
